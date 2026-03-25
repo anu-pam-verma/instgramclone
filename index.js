@@ -15,7 +15,7 @@ app.get("/",(req,res)=>{
         success:true
     })
 }) 
-//middleware
+//middleware call
 app.use(express.json());
 app.use(cookieParser());
 app.use(urlencoded({extended:true}));

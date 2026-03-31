@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.route('/send/:id').post(isAuthentication,sendMessage);
-router.route('/all/:id').get(isAuthentication,getMessageMessage);
+router.route('/all/:id').get(isAuthentication,getMessage);
 
 
 export default router;

@@ -6,7 +6,7 @@ import cloudinary from '../utils/cloudinary.js';
 import { Post } from '../models/post.model.js';
 export const register = async (req,res)=>{
     try {
-        console.log(req.body);
+        // console.log(req.body);
          const {userName,email,password} = req.body;
          if(!userName || !email || !password)
          {
@@ -21,6 +21,13 @@ export const register = async (req,res)=>{
          {
             return res.status(401).json({message:"email already registerd",success:false});
          }
+         const existusername = await User.findOne({userName});
+         if(existusername)
+         {
+           return res.status(400).json({message:"User Name already exits",status:400})
+        }
+        
+        
          
          const hashedPassword = await bcrypt.hash(password,10);
          await User.create({
